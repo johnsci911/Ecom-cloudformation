@@ -8,7 +8,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - 8002:8000
+      - 8004:8000
     depends_on:
       - email_sender_db
 
