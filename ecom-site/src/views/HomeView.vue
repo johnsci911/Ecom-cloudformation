@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue'
 const products = ref([])
 
 onMounted(() => {
-  fetch('http://localhost:8000/graphql', {
+  fetch('http://54.226.144.103:8000/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -38,7 +38,7 @@ function showAlert() {
   this.$swal('Test')
 }
 function checkout(product_id, user_id, user_email, product_name, product_description, product_price) {
-  fetch('http://localhost:8002/graphql', {
+  fetch('http://54.226.144.103:8002/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -59,7 +59,7 @@ function checkout(product_id, user_id, user_email, product_name, product_descrip
   .then(result => {
     console.log(result)
   })
-  fetch('http://localhost:8004/graphql', {
+  fetch('http://54.226.144.103:8004/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
