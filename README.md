@@ -1,36 +1,43 @@
 # ecom-site
 
-This template should help get you started developing with Vue 3 in Vite.
+## Frontend
+`ecom-site`
 
-## Recommended IDE Setup
+* Vue 3
+* Vue Apollo
+* GraphQL
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Customize configuration
+### Backend
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+* Laravel 10
+    - `catalogs` - to show products (Products have its own user, logged in user who bought the product)
+    - `checkouts` - for tracking user checkouts
+    - `email_sender` - for tracking emails sent
 
-## Project Setup
+### Email service
 
-```sh
-npm install
-```
+* Mailtrap.io
 
-### Compile and Hot-Reload for Development
+### AWS Cloudformation
 
-```sh
-npm run dev
-```
+* `cf.json` - for provisioning the AWS Cloudformation
 
-### Compile and Minify for Production
+### Docker service names
+    catalogs
+    checkouts
+    email_sender
+---
+  * Ports used for backend (GraphQL)
+    * 8000 - catalogs
+    * 8002 - checkouts
+    * 8004 - email_sender
+---
+  * MySQL
+    * `catalogs_db` - 33061
+    * `checkouts_db` - 33062
+    * `email_sender_db` - 33063
 
-```sh
-npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
 
