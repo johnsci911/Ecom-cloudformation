@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  email_sender:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'php artisan serve --host=0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 8002:8000
+    depends_on:
+      - email_sender_db
+
+  # admin_queue:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   command: 'php artisan queue:work'
+  #   depends_on:
+  #     -email_sender_db
+
+  email_sender_db:
+    image: mysql:5.7.22
+    ulimits:
+      nproc: 262144
+      nofile:
+        soft: 10000
+        hard: 20000
+    environment:
+      MYSQL_DATABASE: email_sender
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./storage/dbdata:/var/lib/mysql
+    ports:
+      - 33063:3306
+
+
