@@ -105,9 +105,8 @@ let placeOrder = (cart, user_id, user_email) => {
     })
   })
   .then(response => response.json())
-  .then(result => {
-    // flash('Order is placed')
-    console.log(result)
+  .then(() => {
+    flash('Order is placed')
   })
 }
 </script>
