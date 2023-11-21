@@ -9,7 +9,7 @@ const products = ref([])
 let cart = ref([])
 
 onMounted(() => {
-  fetch('http://localhost:8000/graphql', {
+  fetch('http://18.234.82.38:8000/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -51,7 +51,7 @@ let removeFromCart = (product_id) => {
 }
 
 let placeOrder = (cart, user_id, user_email) => {
-  fetch('http://localhost:8002/graphql', {
+  fetch('http://18.234.82.38:8002/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -78,7 +78,7 @@ let placeOrder = (cart, user_id, user_email) => {
 
   var totalPrice = cart.reduce((sum, object) => (eval(`${sum} + ${object.product_price}`)), 0)
 
-  fetch('http://localhost:8004/graphql', {
+  fetch('http://18.234.82.38:8004/graphql', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
