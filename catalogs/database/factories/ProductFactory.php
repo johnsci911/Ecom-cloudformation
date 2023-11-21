@@ -18,9 +18,8 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(4, true),
-            'user_id' => User::factory()->create(),
-            'description' => $this->faker->sentence(),
+            'name' => $this->faker->words(2, true),
+            'description' => $this->faker->sentence(3),
             'price' => $this->faker->numberBetween(1, 1000),
             'created_at' => $this->faker->dateTimeBetween('-30 days', now()),
         ];
