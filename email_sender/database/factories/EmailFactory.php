@@ -16,13 +16,19 @@ class EmailFactory extends Factory
      */
     public function definition(): array
     {
+        $cart = [
+            'product_id' => $this->faker->numberBetween(1, 1000),
+            'user_id' => $this->faker->numberBetween(1, 1000),
+            'user_email' => $this->faker->email(),
+            'product_name' => $this->faker->words(4, true),
+            'product_description' => $this->faker->sentence(5, true),
+            'product_price' => $this->faker->numberBetween(1, 1000),
+        ];
         return [
             'user_id' => $this->faker->numberBetween(1, 1000),
-            'product_id' => $this->faker->numberBetween(1, 1000),
-            'product_name' => $this->faker->words(3, true),
+            'cart' => json_encode($cart),
             'user_email' => $this->faker->email(),
-            'details' => $this->faker->sentences(3, true),
-            'price' => $this->faker->numberBetween(1, 1000),
+            'total' => $this->faker->numberBetween(1, 1000),
         ];
     }
 }

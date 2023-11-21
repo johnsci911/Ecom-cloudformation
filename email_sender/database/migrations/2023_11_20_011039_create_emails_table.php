@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('emails', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
-            $table->string('product_name');
+            $table->text('cart');
             $table->string('user_email');
-            $table->text('details');
-            $table->float('price');
+            $table->float('total');
             $table->timestamps();
         });
     }
