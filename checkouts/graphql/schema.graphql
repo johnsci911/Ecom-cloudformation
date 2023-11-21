@@ -44,10 +44,10 @@ type User {
 
 type Checkout {
     id: ID!
-    product_id: ID!
+    cart: String!
     user_id: ID!
 }
 
 type Mutation {
-    createCheckout(user_id: ID!, product_id: ID!): Checkout @create
+    createCheckout(user_id: ID!, cart: String!): Checkout @create
 }
