@@ -24,11 +24,9 @@ type Query {
 type Mutation {
     createEmail(
         user_id: ID!
-        product_id: ID!
         user_email: String!
-        product_name: String!
-        details: String!
-        price: String!
+        cart: String!
+        total: String!
     ) : Email @create
 }
 
@@ -56,11 +54,9 @@ type User {
 type Email {
     id: ID!
     user_id: ID!
-    product_id: ID!
     user_email: String!
-    product_name: String!
-    details: String!
-    price: String!
+    cart: String!
+    total: String!
     created_at: DateTime!
     updated_at: DateTime!
 }
