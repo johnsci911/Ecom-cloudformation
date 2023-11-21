@@ -13,8 +13,10 @@ class EmailObserver
      */
     public function created(Email $email): void
     {
+        $cartData = json_decode(stripslashes($email->cart));
+
         Mail::to($email->user_email)
-            ->queue(new OrderIsPlaced($email));
+            ->queue(new OrderIsPlaced($email, $cartData));
     }
 
     /**
