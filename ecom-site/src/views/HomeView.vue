@@ -53,7 +53,7 @@ let removeFromCart = (product_id) => {
 
 let placeOrder = (cartItems, user_id, user_email) => {
   if (user_email === '' || !cart.value.length) {
-    flash('Email is required', 'Warning', 'warning')
+    flash('Cart is empty or Email is required', 'Warning', 'warning')
   } else {
     fetch('http://18.234.82.38:8002/graphql', {
       method: 'post',
