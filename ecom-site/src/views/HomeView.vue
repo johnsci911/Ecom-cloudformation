@@ -50,7 +50,7 @@ let removeFromCart = (product_id) => {
   cart.value = cart.value.filter(item => item.product_id != product_id)
 }
 
-let placeOrder = (cart, user_id, user_email) => {
+let placeOrder = (cartItems, user_id, user_email) => {
   fetch('http://18.234.82.38:8002/graphql', {
     method: 'post',
     headers: {
@@ -61,7 +61,7 @@ let placeOrder = (cart, user_id, user_email) => {
         mutation {
           createCheckout(
             user_id: "${user_id}"
-            cart: "\"${JSON.stringify(JSON.stringify(cart))}\""
+            cart: "\"${JSON.stringify(JSON.stringify(cartItems))}\""
           ) {
             id
             user_id
@@ -72,11 +72,8 @@ let placeOrder = (cart, user_id, user_email) => {
     })
   })
   .then(response => response.json())
-  .then(result => {
-    // console.log(result.data.createCheckout.cart.replace(/\\/g,""))
-  })
 
-  var totalPrice = cart.reduce((sum, object) => (eval(`${sum} + ${object.product_price}`)), 0)
+  var totalPrice = cartItems.reduce((sum, object) => (eval(`${sum} + ${object.product_price}`)), 0)
 
   fetch('http://18.234.82.38:8004/graphql', {
     method: 'post',
@@ -88,7 +85,7 @@ let placeOrder = (cart, user_id, user_email) => {
         mutation {
           createEmail(
             user_id: "${user_id}",
-            cart: "\"${JSON.stringify(JSON.stringify(cart))}\"",
+            cart: "\"${JSON.stringify(JSON.stringify(cartItems))}\"",
             user_email: "${user_email}",
             total: "${totalPrice}",
           ) {
@@ -107,6 +104,9 @@ let placeOrder = (cart, user_id, user_email) => {
   .then(response => response.json())
   .then(() => {
     flash('Order is placed')
+      .then(() => {
+        cart.value = []
+      })
   })
 }
 </script>
