@@ -91,4 +91,5 @@ Run `docker-compose exec {service name} sh` to go inside the service image
   ```
 ---
 ### Limitation (free tier T2.micro)
-Whenever I run 3 docker image, it consumes all of compute power so I decided to start two docker images
+Whenever I run 3 docker image, the instance stops responding so I decided to start two out of three docker images instead
+`catalogs` and `email_sender`. `checkouts` it not running
