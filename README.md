@@ -54,9 +54,9 @@ MAIL_FROM_NAME="ecom"
 http://18.234.82.38:3000/
 
 ### Running localhost
-* Catalogs, Checkouts, Email_sender
+* Services: Catalogs, Checkouts, Email_sender
   * `docker-compose up -d` - Run a container
-  * `docker-compose exec {service name} sh` - Run artisan command inside catalogs image
+  * `docker-compose exec {service name} sh` - Run artisan command inside service image
   ---
   #### Database setup inside each containers
   ##### catalogs
