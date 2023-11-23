@@ -54,11 +54,14 @@ MAIL_FROM_NAME="ecom"
 http://18.234.82.38:3000/
 
 ### Running localhost
-* Services: Catalogs, Checkouts, Email_sender
-  * `docker-compose up -d` - Run a container
-  * `docker-compose exec {service name} sh` - Run artisan command inside service image
+Go into each of the services folders: `catalogs`, `checkouts`, `email_sender` then run `docker-compose up -d` to start the 3 services
+Run `docker-compose exec {service name} sh` to go inside the service image
+
   ---
-  #### Database setup inside each containers
+  * Before migrating and seeding data, you'll need to setup `.env` first in each service containers
+  * After `.env` is setup run `php artisan migrate --seed` or `php artisan migrate:fresh --seed`
+  
+  ### Database setup inside each containers
   ##### catalogs
   ```
     DB_CONNECTION=mysql
